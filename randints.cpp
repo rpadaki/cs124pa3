@@ -1,31 +1,32 @@
 #include <fstream>
-#include <iostream>
-#include <vector>
 #include <cstdint>
 #include <cmath>
 #include <random>
 #include <string>
+#include <iostream>
 
 using namespace std;
 
-void randlist(string);
+/*
+*	Generate random ints and
+*	store them in files.
+*/
+
+void randList(string);
 
 int main(int argc, char *argv[]) {
-	// Check for proper input.
 	if (argc != 2) {
 		cout << "usage: " << argv[0] << " <filename>\n";
 	}
 	else {
-		// Store 100 randomly 64-bit
-		// ints in the specified file.
-		randlist(argv[1]);
+		randList(argv[1]);
 	}
+	return 0;
 }
 
 // Store 100 random 64-bit ints
 // in specified file.
-void randlist(string filename) {
-	// Open output file
+void randList(string filename) {
 	ofstream out(filename);
 
 	// RNG setup
@@ -40,6 +41,5 @@ void randlist(string filename) {
 	}
 	out << dis(gen);
 
-	// Close output file
 	out.close();
 }

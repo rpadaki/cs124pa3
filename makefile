@@ -1,19 +1,25 @@
 CC=g++
 CFLAGS=-std=gnu++0x -c -Wall
 
-all: kk
+all: repstd kkalg kk
 
-repstd: repstd.o
-	$(CC) repstd.o -o repstd
+repstd: repstd.o kkimp.o rep.o
+	@ld -r repstd.o kkimp.o rep.o -o repfull.o
+
+repprep: repprep.o kkimp.o rep.o
+	@ld -r repprep.o kkimp.o rep.o -o repfull.o
+
+%alg: %alg.o
+	@ld -r $< repfull.o -o kkdep.o
 
 randints: randints.o
-	$(CC) randints.o -o randints
+	@$(CC) randints.o -o randints
 
 kk: kk.o
-	$(CC) kk.o -o kk
+	@$(CC) kk.o kkdep.o -o kk
 
 %.o: %.cpp
-	$(CC) $(CFLAGS) $<
+	@$(CC) $(CFLAGS) $<
 
 clean:
-	rm *.o kk randints repstd
+	-@rm -rf *.o kk randints>/dev/null || true
