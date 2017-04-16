@@ -3,6 +3,9 @@ CFLAGS=-std=gnu++0x -c -Wall
 
 all: kk
 
+randints: randints.o
+	$(CC) randints.o -o randints
+
 kk: kk.o
 	$(CC) kk.o -o kk
 
@@ -10,4 +13,4 @@ kk: kk.o
 	$(CC) $(CFLAGS) $<
 
 clean:
-	rm *.o kk
+	rm *.o kk randints
