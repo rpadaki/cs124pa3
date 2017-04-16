@@ -1,8 +1,10 @@
 CC=g++
-CFLAGS=-std=gnu++0x
+CFLAGS=-std=gnu++0x -c -Wall
+
 all: kk
+
 kk: kk.o
-	$(CC) $(CFLAGS) kk.o -o kk
+	$(CC) kk.o -o kk
 
 %.o: %.cpp
 	$(CC) $(CFLAGS) $<
