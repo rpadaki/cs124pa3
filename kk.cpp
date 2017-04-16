@@ -15,5 +15,6 @@ int main() {
 	{
 		cout << dis(gen) << endl;
 	}
+	cout << "Hello tomoka!";
 	return 0;
 }
