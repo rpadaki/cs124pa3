@@ -53,14 +53,11 @@ vector<int> Rep::randSolution() {
 vector<vector<int>>  Rep::neighbors(vector<int> solution) {
 	vector<vector<int>> neighbors(n*(n+1)/2, solution);
 	int k = 0;
-	cout << "pizza" << endl;
 	for (int i = 0; i < n; ++i) {
 		neighbors[k][i] = 1-neighbors[k][i];
 		k++;
 	}
-		cout << "pizza" << endl;
-
-	for (int i = 0; i < n; ++i) {
+		for (int i = 0; i < n; ++i) {
 		for (int j = 0; j < i; ++j)
 		{
 			neighbors[k][i] = 1-neighbors[k][i];
@@ -68,9 +65,7 @@ vector<vector<int>>  Rep::neighbors(vector<int> solution) {
 			k++;
 		}
 	}
-		cout << "pizza" << endl;
-
-	return neighbors;
+		return neighbors;
 }
 
 // The residue is just the absolute value of the sum
