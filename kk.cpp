@@ -10,18 +10,10 @@
 using namespace std;
 
 
-int main() {
-//	random_device rd;
-//	mt19937_64 gen(rd());
-//	uniform_int_distribution<uint64_t> dis(1,pow(10,12));
-//	for (int i = 0; i < 7; ++i)
-//	{
-//		cout << dis(gen) << endl;
-//	}
+int main() {    
+    vector<uint64_t> a = {10, 15, 0, 6, 5};
     
-    vector<int> a = {10, 15, 0, 6, 5};
-    
-    int b = kk(a);
+    uint64_t b = kk(a);
     
     cout << a.size() << endl;
     cout << a[0] << endl;
@@ -31,7 +23,7 @@ int main() {
     return 0;
 }
 
-void binarysearch(int x, vector<int> &a)
+void binarysearch(uint64_t x, vector<uint64_t> &a)
 {
 
     int m;
@@ -68,7 +60,7 @@ void binarysearch(int x, vector<int> &a)
     }
 }
 
-int kk(vector<int> a)
+uint64_t kk(vector<uint64_t> a)
 {
     sort(a.begin(),a.end());
     while(a[0] == 0)
@@ -82,9 +74,9 @@ int kk(vector<int> a)
     }
     while (a.size() > 1)
     {
-        int x = a[a.size()-1];
+        uint64_t x = a[a.size()-1];
         a.pop_back();
-        int y = a[a.size()-1];
+        uint64_t y = a[a.size()-1];
         a.pop_back();
         binarysearch(x-y,a);
     }
