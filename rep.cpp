@@ -6,9 +6,9 @@
 *  me the other day to never copy and
 *  paste code.
 */
-vector<int> Rep::randNeighbor() {
+vector<int> Rep::randNeighbor(vector<int> solution) {
 	random_device rd;
 	mt19937 gen(rd());
 	uniform_int_distribution<int> dis(0,neighbors.size()-1);
-	return neighbors[dis(gen)];
+	return findNeighbor(solution, dis(gen));
 }

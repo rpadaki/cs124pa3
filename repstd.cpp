@@ -21,17 +21,15 @@ vector<int> Rep::randSolution() {
 }
 
 // Neighbors differ in exactly 1 or 2 slots.
-void  Rep::calcNeighbors(vector<int> solution) {
+void  Rep::calcNeighbors() {
 	// We can use combinatorics to calculate the number
 	// of neighbors.
-	neighbors.clear();
-	neighbors.resize(n*(n+1)/2);
-	fill(neighbors.begin(), neighbors.end(), solution);
+	neighbors = vector<vector<int>> (n*(n+1)/2,vector<int>(n));
 	int k = 0;
 	
 	// Neighbors that differ in 1 slot.
 	for (int i = 0; i < n; ++i) {
-		neighbors[k][i] = 1-neighbors[k][i];
+		neighbors[k][i] = 1;
 		++k;
 	}
 
@@ -39,11 +37,20 @@ void  Rep::calcNeighbors(vector<int> solution) {
 	for (int i = 0; i < n; ++i) {
 		for (int j = 0; j < i; ++j)
 		{
-			neighbors[k][i] = 1-neighbors[k][i];
-			neighbors[k][j] = 1-neighbors[k][j];
+			neighbors[k][i] = 1;
+			neighbors[k][j] = 1;
 			++k;
 		}
 	}
+}
+
+// Given a slot in neighbors, calculate
+// the actual solution.
+vector<int> Rep::findNeighbor(vector<int> solution, int m) {
+	for (int i = 0; i < n; ++i) {
+		solution[i] = (solution[i] + neighbors[m][i]) % 2;
+	}
+	return solution;
 }
 
 // The residue is just the positive difference

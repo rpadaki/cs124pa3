@@ -22,19 +22,17 @@ uint64_t minResidue(vector<uint64_t> a, int maxIter) {
 	uint64_t resu = ress;
 	uint64_t rest;
 	long double num = pow(10,10);
-	r.calcNeighbors(s);
+	r.calcNeighbors();
 	for (int i=0; i<maxIter; ++i) {
-		t = r.randNeighbor();
+		t = r.randNeighbor(s);
 		rest = r.residue(t);
 		if (rest < ress) {
 			s=t;
 			ress=rest;
-			r.calcNeighbors(s);
 		}
 		else if (dis(gen) < temp(ress,rest,i, num)) {
 			s=t;
 			ress=rest;
-			r.calcNeighbors(s);
 		}
 		if (ress < resu) {
 			resu=ress;

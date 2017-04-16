@@ -20,18 +20,22 @@ struct Rep {
 	// our list
 	vector<uint64_t> a;
 
-	// keep track of neighbors efficiently
+	// ways to create neighbors
 	vector<vector<int>> neighbors;
 
 	// Generate a random solution.
 	vector<int> randSolution();
 
-	// Calculate the neighbors of given
-	// solution and store in neighbors.
-	void calcNeighbors(vector<int>);
+	// initialize neighbors
+	void calcNeighbors();
 
-	// Get a random element of neighbors.
-	vector<int> randNeighbor();
+	// how to actually create a neighbor
+	// given a 'neighbor constructor'
+	vector<int> findNeighbor(vector<int>, int);
+
+	// Get a random neighbor of the given
+	// solution.
+	vector<int> randNeighbor(vector<int>);
 
 	// Get the residue of a given solution.
 	uint64_t residue(vector<int>);

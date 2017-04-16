@@ -21,20 +21,27 @@ vector<int> Rep::randSolution() {
 }
 
 // Neighbors differ in exactly 1 slot.
-void Rep::calcNeighbors(vector<int> solution) {
+void Rep::calcNeighbors() {
 	// There are n slots and each one can be changed to
 	// (n-1) different values.
-	neighbors.clear();
-	neighbors.resize(n*(n-1));
-	fill(neighbors.begin(), neighbors.end(), solution);
+	neighbors = vector<vector<int>>(n*(n-1),vector<int>(n));
 	int k = 0;
 
 	for (int i = 0; i < n; ++i) {
 		for (int j = 1; j < n; ++j) {
-			neighbors[k][i] = (neighbors[k][i] + j) % n;
+			neighbors[k][i] = j;
 			++k;
 		}
 	}
+}
+
+// Given a slot in neighbors, calculate
+// the actual solution.
+vector<int> Rep::findNeighbor(vector<int> solution, int m) {
+	for (int i = 0; i < n; ++i) {
+		solution[i] = (solution[i] + neighbors[m][i]) % n;
+	}
+	return solution;
 }
 
 // To get the residue, we first enforce the

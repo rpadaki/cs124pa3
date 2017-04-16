@@ -15,11 +15,11 @@ vector<uint64_t> getList(string);
 
 int main(int argc, char *argv[]) {
 	if (argc != 2) {
-		cout << "usage: " << argv[0] << " <filename>\n";
+		cout << "usage: " << argv[0] << "<filename>\n";
 	}
 	else {
 		vector<uint64_t> a = getList(argv[1]);
-		cout << minResidue(a,25000);
+		cout << minResidue(a,100000);
 	}
 	return 0;
 }
