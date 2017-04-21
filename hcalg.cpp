@@ -9,13 +9,17 @@ uint64_t minResidue(vector<uint64_t> a, int maxIter) {
 	r.a = a;
 	r.n = a.size();
 	vector<int> s = r.randSolution();
+	uint64_t ress = r.residue(s);
 	vector<int> t;
+	uint64_t rest;;
 	r.calcNeighbors();
 	for (int i=0; i<maxIter; ++i) {
 		t = r.randNeighbor(s);
-		if (r.residue(t) < r.residue(s)) {
-			s=t;
+		rest = r.residue(t);
+		if (rest < ress) {
+			s = t;
+			ress = rest;
 		}
 	}
-	return r.residue(t);
+	return ress;
 }

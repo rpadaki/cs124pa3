@@ -19,7 +19,7 @@ int main(int argc, char *argv[]) {
 	}
 	else {
 		vector<uint64_t> a = getList(argv[1]);
-		cout << minResidue(a,100000);
+		cout << minResidue(a,25000);
 	}
 	return 0;
 }
